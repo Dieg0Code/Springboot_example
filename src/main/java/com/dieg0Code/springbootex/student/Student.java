@@ -6,7 +6,7 @@ public class Student {
     private Long id;
     private String name;
     private String email;
-    private LocalDate dob;
+    private LocalDate dob; // date of born
     private Integer age;
 
     public Student() {
