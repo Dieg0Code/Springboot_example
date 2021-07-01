@@ -1,5 +1,6 @@
 package com.dieg0Code.springbootex.student;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -9,15 +10,14 @@ import java.util.List;
 @Service
 public class StudentService {
 
+    private final StudentRepository studentRepository;
+
+    @Autowired
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
     public List<Student> getStudents() {
-        return List.of(
-                new Student(
-                        1L,
-                        "Diego",
-                        "dieg0.code@email.com",
-                        LocalDate.of(1996, Month.FEBRUARY, 2),
-                        25
-                )
-        );
+        return studentRepository.findAll();
     }
 }
